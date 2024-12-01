@@ -25,11 +25,46 @@ function App() {
     }
   };
 
-  return (
-    <> 
-      News app
-    </>
-  )
-}
+ return (
+    <div className="App">
+      <h1>News Fetcher</h1>
+      <div>
+        <input
+          type="text"
+          placeholder="Search Query"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+        <button onClick={fetchNews} disabled={loading}>
+          {loading ? 'Loading...' : 'Fetch News'}
+        </button>
+      </div>
 
+      <div>
+        <h2>News Articles</h2>
+        {news.length > 0 ? (
+          <ul>
+            {news.map((article, index) => (
+              <li key={index}>
+                <h3>{article.title}</h3>
+                <p>{article.description}</p>
+                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                  Read more
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No articles found</p>
+        )}
+      </div>
+    </div>
+  );
+};
 export default App
