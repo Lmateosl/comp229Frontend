@@ -1,18 +1,18 @@
-// src/pages/LoginPage.jsx
+// src/pages/SignupPage.jsx
 import React, { useState } from 'react';
 
-function LoginPage() {
+function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Simulate login process
-    console.log('Logging in with', email, password);
+  const handleSignup = () => {
+    // Simulate signup process
+    console.log('Signing up with', email, password);
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Signup</h2>
       <input 
         type="email" 
         value={email} 
@@ -25,9 +25,9 @@ function LoginPage() {
         onChange={(e) => setPassword(e.target.value)} 
         placeholder="Password" 
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleSignup}>Signup</button>
     </div>
   );
 }
 
-export default LoginPage;
+export default SignupPage;
