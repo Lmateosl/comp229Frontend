@@ -3,6 +3,7 @@ import { authService, getNews } from './features/httpRequest';
 import Navbar from './components/Navbar.jsx';
 import ModalAuth from './components/Modal.jsx';
 import CardsContainer from './container/CardsContainer.jsx';
+import Categories from './components/Categories.jsx';
 import './App.css'
 
 function App() {
@@ -55,13 +56,15 @@ function App() {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
       <div className='all'>
         <Navbar isLoged={isLoged} email={email} handleOpen={handleOpen} logout={logout}/>
+        <Categories handleClickCategorie={loadNews}/>
         <CardsContainer articles={articles}/>
-        <ModalAuth open={open} auth={auth}/>
+        <ModalAuth open={open} auth={auth} handleClose={handleClose}/>
       </div>
     </>
   )

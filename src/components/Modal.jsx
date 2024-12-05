@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AuthContainer from '../container/AuthContainer';
-import { height } from '@mui/system';
+import { display, height } from '@mui/system';
 
 const style = {
   position: 'absolute',
@@ -19,9 +19,7 @@ const style = {
   height: '60%'
 };
 
-export default function ModalAuth({open, auth}) {
-  const handleClose = () => setOpen(false);
-
+export default function ModalAuth({open, auth, handleClose}) {
   return (
     <div>
       <Modal
@@ -32,6 +30,7 @@ export default function ModalAuth({open, auth}) {
       >
         <Box sx={style}>
           <AuthContainer auth={auth}/>
+          <Button variant="contained" onClick={() => handleClose()} sx={{display: 'block', margin: '40px auto'}}>Close</Button>
         </Box>
       </Modal>
     </div>

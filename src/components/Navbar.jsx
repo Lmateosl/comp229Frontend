@@ -27,7 +27,8 @@ export default function Navbar ({isLoged, handleOpen, email, logout}) {
                   aria-controls={open ? 'basic-menu' : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
-                  variant="contained"
+                  variant="outlined"
+                  sx={{backgroundColor: 'white'}}
                   onClick={handleClick}
                 >
                   {email}
