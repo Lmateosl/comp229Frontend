@@ -44,7 +44,8 @@ function App() {
     } catch (err) {
       console.log(err);
       setIsLoged(false);
-      alert(err.message);
+      const errorMsg = isLogin ? 'Error in the loging.' : 'Error creating an account';
+      alert(errorMsg);
       setOpen(false);
     }
   }
