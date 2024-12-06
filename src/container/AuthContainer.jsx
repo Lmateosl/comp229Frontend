@@ -12,7 +12,7 @@ export default function AuthContainer ({auth}) {
     const [password, setPassword] = useState('');
     return (
         <>
-        <h2 style={{textAlign: 'center'}}>{isLogin ? 'Login' : 'Create An Account'}</h2>
+        <h2 style={{textAlign: 'center'}}>{isLogin ? 'Login' : 'Create Account'}</h2>
         <form className='formAuth'>
         <TextField
                 id="filled-password-input"

@@ -17,7 +17,10 @@ function App() {
       } else {
         window.localStorage.removeItem('token');
         setIsLoged(false);
+        handleOpen();
       }
+    } else {
+      handleOpen();
     }
   }, [email]);
   const [articles, setArticles] = useState(['']);
@@ -44,7 +47,7 @@ function App() {
     } catch (err) {
       console.log(err);
       setIsLoged(false);
-      const errorMsg = isLogin ? 'Error in the loging.' : 'Error creating an account';
+      const errorMsg = isLogin ? 'Error in the loging. Try again or create an account' : 'Error creating an account';
       alert(errorMsg);
       setOpen(false);
     }
