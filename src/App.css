@@ -1,8 +1,9 @@
+/* General layout */
 .all {
   width: 100%;
   min-height: max-content;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar_container {
@@ -11,7 +12,7 @@
   background-color: #007bff;
   display: flex;
   justify-content: space-between;
-  padding: 0px 5%;
+  padding: 0 5%;
   flex-direction: row;
   align-items: center;
 }
@@ -21,12 +22,95 @@
 }
 
 .articles_container {
-  max-width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   width: 100%;
-  min-height: max-content;
-  margin: 30px auto;
+  min-height: 100vh; /* Full height */
+  overflow: auto; /* Allows scrolling */
+  background-color: #f0f0f0;
+  padding-top: 100px; /* Add some space for header */
+  border-radius: 10px;
+  flex-direction: column;
 }
 
+.featured_article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+  z-index: 10;
+  width: 80%; /* Ensure it's responsive */
+  max-width: 800px;
+  position: relative; /* Allows it to move with scrolling */
+  transform: scale(0.9); /* Smaller size for the featured article */
+  margin-bottom: 20px; /* Add space below for side articles */
+}
+
+.featured_article.selected {
+  transform: scale(1.2); /* Larger size for the selected article */
+}
+
+.side_articles {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 5;
+}
+
+.side_articles.left {
+  left: 10px; /* Place on the left side */
+}
+
+.side_articles.right {
+  right: 10px; /* Place on the right side */
+}
+
+/* Each side article item */
+.article_item {
+  width: 250px; /* Increased width for side articles */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.article_item:hover {
+  transform: scale(1.1); /* Hover effect for side articles */
+}
+
+.scroll_button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.scroll_button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.scroll_button.left {
+  left: 10px;
+}
+
+.scroll_button.right {
+  right: 10px;
+}
+
+/* Footer Button Container */
 .footerButtons {
   display: flex;
   flex-direction: column;
@@ -35,6 +119,7 @@
   align-items: center;
 }
 
+/* Authentication form styles */
 .formAuth {
   width: 100%;
   display: flex;
@@ -43,3 +128,109 @@
   gap: 3;
   align-items: center;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .articles_container {
+    padding-top: 60px; /* Adjust for smaller screens */
+  }
+
+  .featured_article {
+    width: 95%; /* Slightly smaller on mobile */
+  }
+
+  .side_articles {
+    top: 40%; /* Adjust positioning */
+    gap: 5px; /* Reduce the gap */
+  }
+
+  .article_item {
+    width: 200px; /* Smaller size on mobile */
+  }
+}
+/* Articles container */
+/* Articles container */
+.articles_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  width: 100%; /* Ensure container takes full width */
+  max-width: 100vw; /* Ensure the width doesn't exceed viewport */
+}
+
+/* Articles wrapper - flex container to hold the articles */
+.articles_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between the articles */
+  max-width: 100%; /* Ensure it doesn't exceed screen width */
+  overflow-x: auto; /* Enable horizontal scroll only if needed */
+  padding: 10px;
+  scroll-snap-type: x mandatory; /* Ensure smooth scrolling */
+  flex-wrap: nowrap; /* Prevent wrapping of articles */
+}
+
+/* Individual article styling */
+.article {
+  flex: 0 0 auto; /* Prevent articles from shrinking or growing */
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  scroll-snap-align: center; /* Center the selected article */
+  max-width: 100%; /* Ensure article doesn't overflow */
+  box-sizing: border-box;
+}
+
+/* Style for the selected (focused) article */
+.focused {
+  transform: scale(1.2); /* Make the focused article bigger */
+  filter: none; /* No blur on focused article */
+  z-index: 10; /* Ensure the focused article is on top */
+}
+
+/* Style for the blurred (deselected) articles */
+.blurred {
+  filter: blur(5px); /* Apply blur effect */
+  opacity: 0.6; /* Reduce opacity */
+}
+
+/* Arrow button styling */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 3;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .articles_wrapper {
+      gap: 10px; /* Smaller gap for mobile */
+  }
+  .arrow {
+      font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
