@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 export default function CardNews({article}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }}> 
       <CardMedia
         sx={{ height: 140 }}
         image={article.urlToImage}
@@ -23,7 +23,7 @@ export default function CardNews({article}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+      <Button size="small" component="a" href={article.url} target="_blank" rel="noopener noreferrer">Learn More</Button>
       </CardActions>
     </Card>
   );
