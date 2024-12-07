@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../App.css';
 import CardNews from '../components/Card';
 
 export default function CardsContainer({ articles }) {
     const [selectedArticleIndex, setSelectedArticleIndex] = useState(null);
+    const scrollContainerRef = useRef(null);
 
     const handleSelectArticle = (index) => {
-        // Toggle selection (deselect if clicked again)
         setSelectedArticleIndex(index === selectedArticleIndex ? null : index);
+    };
+
+    const scroll = (direction) => {
+        const scrollContainer = scrollContainerRef.current;
+        if (!scrollContainer) return;
+
+        // Scroll left or right 
+        const scrollAmount = direction === 'left' ? -200 : 200;
+        scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     };
 
     return (
         <div className="articles_container">
-            <button
-                className="arrow left"
-                onClick={() => setSelectedArticleIndex((prev) => Math.max(0, prev - 1))}
-            >
-                ←
+            {/* Left arrow for scrolling */}
+            <button className="scroll-arrow left" onClick={() => scroll('left')}>
+                &lt;
             </button>
 
-            <div className="articles_wrapper">
+            <div className="articles_wrapper" ref={scrollContainerRef}>
                 {articles.map((article, i) => (
                     <div
                         key={i}
@@ -31,11 +38,9 @@ export default function CardsContainer({ articles }) {
                 ))}
             </div>
 
-            <button
-                className="arrow right"
-                onClick={() => setSelectedArticleIndex((prev) => Math.min(articles.length - 1, prev + 1))}
-            >
-                →
+            {/* Right arrow for scrolling */}
+            <button className="scroll-arrow right" onClick={() => scroll('right')}>
+                &gt;
             </button>
         </div>
     );

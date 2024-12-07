@@ -64,14 +64,6 @@
   z-index: 5;
 }
 
-.side_articles.left {
-  left: 10px; /* Place on the left side */
-}
-
-.side_articles.right {
-  right: 10px; /* Place on the right side */
-}
-
 /* Each side article item */
 .article_item {
   width: 250px; /* Increased width for side articles */
@@ -148,85 +140,96 @@
     width: 200px; /* Smaller size on mobile */
   }
 }
-/* Articles container */
-/* Articles container */
 .articles_container {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  padding: 20px;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  width: 100%; /* Ensure container takes full width */
-  max-width: 100vw; /* Ensure the width doesn't exceed viewport */
+  padding: 10px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 99vw;
 }
 
-/* Articles wrapper - flex container to hold the articles */
 .articles_wrapper {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  flex-wrap: nowrap;
+  padding: 5px;
+  width: 90%;
+  margin-right: 50px;
+}
+
+.article {
+  flex: 0 0 auto;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: center;
+  max-width: 300px;
+  perspective: 1000px;
+}
+
+.focused {
+  transform: scale(1.3) translateY(-10px) rotateX(2deg);
+  filter: none;
+  z-index: 10;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.blurred {
+  filter: blur(5px);
+  opacity: 0.6;
+  transform: scale(0.9);
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.scroll-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.scroll-arrow {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Space between the articles */
-  max-width: 100%; /* Ensure it doesn't exceed screen width */
-  overflow-x: auto; /* Enable horizontal scroll only if needed */
-  padding: 10px;
-  scroll-snap-type: x mandatory; /* Ensure smooth scrolling */
-  flex-wrap: nowrap; /* Prevent wrapping of articles */
-}
-
-/* Individual article styling */
-.article {
-  flex: 0 0 auto; /* Prevent articles from shrinking or growing */
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-  scroll-snap-align: center; /* Center the selected article */
-  max-width: 100%; /* Ensure article doesn't overflow */
-  box-sizing: border-box;
-}
-
-/* Style for the selected (focused) article */
-.focused {
-  transform: scale(1.2); /* Make the focused article bigger */
-  filter: none; /* No blur on focused article */
-  z-index: 10; /* Ensure the focused article is on top */
-}
-
-/* Style for the blurred (deselected) articles */
-.blurred {
-  filter: blur(5px); /* Apply blur effect */
-  opacity: 0.6; /* Reduce opacity */
-}
-
-/* Arrow button styling */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.3);
-  color: white;
-  border: none;
   font-size: 24px;
   cursor: pointer;
-  padding: 10px;
-  z-index: 3;
+  transition: background-color 0.4s;
 }
 
-.arrow.left {
-  left: 10px;
+.scroll-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-.arrow.right {
-  right: 10px;
+.scroll-arrow.right {
+  margin-right: 20px;
+  margin-left: -50px;
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 600px) {
   .articles_wrapper {
-      gap: 10px; /* Smaller gap for mobile */
+    gap: 10px;
   }
-  .arrow {
-      font-size: 20px;
+  .scroll-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
   }
 }
+
+
+
+
 
 
 
