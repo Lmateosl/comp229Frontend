@@ -1,4 +1,5 @@
-const url = 'http://localhost:3000/api';
+//const url = 'http://localhost:3000/api';
+const url = 'https://comp229backend.onrender.com/api';
 
 export const getNews = async (cat) => {
     const token = window.localStorage.getItem('token');

@@ -5,16 +5,23 @@ export default function Categories({ handleClickCategorie }) {
     return (
         <div
             style={{
-                display: 'flex', gap: '10px', justifyContent: 'flex-start', marginTop: '20px', overflowX: 'auto', padding: '10px'
+                display: 'flex', 
+                gap: '10px', 
+                justifyContent: 'center',
+                overflowX: 'auto', 
+                padding: '10px',
+                backgroundColor: '#f0f0f0',
+                width: '90%',
+                margin: '20px auto'
             }}
         >
-            <Button variant="outlined" onClick={() => handleClickCategorie('World')}>World</Button>
-            <Button variant="outlined" onClick={() => handleClickCategorie('Sports')}>Sports</Button>
-            <Button variant="outlined" onClick={() => handleClickCategorie('Business')}>Business</Button>
-            <Button variant="outlined" onClick={() => handleClickCategorie('Technology')}>Technology</Button>
-            <Button variant="outlined" onClick={() => handleClickCategorie('Entertainment')}>Entertainment</Button>
-            <Button variant="outlined" onClick={() => handleClickCategorie('Politics')}>Politics</Button>
-            <Button variant="outlined" onClick={() => handleClickCategorie('Science')}>Science</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('General')}>General</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('Health')}>Health</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('Sports')}>Sports</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('Business')}>Business</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('Technology')}>Technology</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('Entertainment')}>Entertainment</Button>
+            <Button className="buttonCat" variant="outlined" onClick={() => handleClickCategorie('Science')}>Science</Button>
         </div>
     );
 }

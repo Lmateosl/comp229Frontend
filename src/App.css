@@ -1,9 +1,10 @@
 /* General layout */
 .all {
   width: 100%;
-  min-height: max-content;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
+  background-color: #f0f0f0;
 }
 
 .navbar_container {
@@ -17,6 +18,15 @@
   align-items: center;
 }
 
+@media (max-width: 600px) {
+  .navbar_container{
+    flex-direction: column;
+    justify-content: center;
+    height: max-content;
+    padding-bottom: 20px;
+  }
+}
+
 .title {
   color: white;
 }
@@ -26,8 +36,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  height: max-content;
   width: 100%;
-  min-height: 100vh; /* Full height */
   overflow: auto; /* Allows scrolling */
   background-color: #f0f0f0;
   padding-top: 100px; /* Add some space for header */
@@ -139,6 +149,10 @@
   .article_item {
     width: 200px; /* Smaller size on mobile */
   }
+
+  .articles_container {
+    width: 94% !important;
+  }
 }
 .articles_container {
   position: relative;
@@ -148,7 +162,9 @@
   padding: 10px;
   overflow: hidden;
   width: 100%;
+  justify-content: center;
   max-width: 99vw;
+  margin-top: 20px;
 }
 
 .articles_wrapper {
@@ -230,8 +246,10 @@ body {
   overflow-x: hidden;
 }
 
-
-
+.buttonCat {
+  background-color: white !important;
+  min-width: max-content !important;
+}
 
 
 

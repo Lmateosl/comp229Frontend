@@ -27,7 +27,7 @@ export default function CardsContainer({ articles }) {
             </button>
 
             <div className="articles_wrapper" ref={scrollContainerRef}>
-                {articles.map((article, i) => (
+                {articles.filter(item => item.title !== "[Removed]").map((article, i) => (
                     <div
                         key={i}
                         className={`article ${i === selectedArticleIndex ? 'focused' : i !== selectedArticleIndex && selectedArticleIndex !== null ? 'blurred' : ''}`}
