@@ -15,7 +15,7 @@ function NewsSearchForm({ query, setQuery, category, setCategory, onSearch }) {
         <option value="business">Business</option>
         <option value="technology">Technology</option>
         <option value="sports">Sports</option>
-        <option value="health">Health</option>
+        <option value="politics">Politics</option>
       </select>
       <button onClick={onSearch}>Search</button>
     </div>
