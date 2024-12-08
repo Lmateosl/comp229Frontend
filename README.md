@@ -1,8 +1,37 @@
-# React + Vite
+# News Aggregator and Social Platform App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A feature-rich web application that combines news aggregation with social interaction. This app allows users to browse news, bookmark articles, share content, and engage in discussions. It uses Firebase Authentication for secure user management, ensuring safe and easy access to the platform.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Registration and Login**: Secure account creation and login powered by Firebase Authentication.
+- **Custom Tokens**: Generates session tokens for authenticated users for enhanced security.
+- **News Feeds**: Fetches and displays curated articles from the [NewsAPI](https://newsapi.org/docs).
+- **Bookmarking**: Save articles for future reference.
+- **Social Sharing**: Share articles with other users on the platform.
+- **Commenting System**: Engage with the community through discussions.
+- **Responsive Design**: Accessible on mobile, tablet, and desktop devices.
+
+## Tech Stack
+
+### **Frontend**
+- **React**: Component-based UI development.
+- **Axios**: HTTP client for API requests.
+- **CSS/SCSS**: Responsive and modern styling.
+
+### **Backend**
+- **Node.js**: JavaScript runtime for server-side logic.
+- **Express.js**: Framework for creating RESTful APIs.
+- **Firebase Authentication**: Secure user registration and login.
+- **JWT**: Generates secure session tokens for users.
+
+### **APIs**
+- **[NewsAPI](https://newsapi.org/docs)**: Fetches news articles from reliable sources.
+
+## Installation
+
+### **Backend Setup**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-username>/news-app.git
+   cd news-app
