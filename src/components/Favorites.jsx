@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid2';
 import CardNews from './Card';
 import { useEffect } from 'react';
 
-export default function Favorites ({getFav, favorites}) {
+export default function Favorites({getFav, favorites}) {
     useEffect(() => {
         getFav();
         console.log(favorites)
