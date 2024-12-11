@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { authService, getNews } from './features/httpRequest';
+import { getFavorites } from './features/httpRequest';
 import Navbar from './components/Navbar.jsx';
 import ModalAuth from './components/Modal.jsx';
 import CardsContainer from './container/CardsContainer.jsx';
@@ -62,13 +63,29 @@ function App() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+  const [favorites, setFavorites] = useState([]);
+  const getFav = async() => {
+    try {
+      const favorite = await getFavorites();
+      console.log(favorite);
+      setFavorites(favorite.data);
+    } catch (error) {
+      alert('Error getting favorites');
+      handleClose();
+    }
+  }
+
+  
+  const [isAuth, setIsAuth] = useState(true);
+
   return (
     <>
       <div className='all'>
-        <Navbar isLoged={isLoged} email={email} handleOpen={handleOpen} logout={logout}/>
+        <Navbar isLoged={isLoged} email={email} handleOpen={handleOpen} logout={logout} setIsAuth={setIsAuth}/>
         <Categories handleClickCategorie={loadNews}/>
         <CardsContainer articles={articles}/>
-        <ModalAuth open={open} auth={auth} handleClose={handleClose}/>
+        <ModalAuth open={open} auth={auth} handleClose={handleClose} getFav={getFav} favorites={favorites} isAuth={isAuth}/>
       </div>
     </>
   )

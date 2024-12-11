@@ -36,7 +36,48 @@ export const authService = async (data, login) => {
   
       return result;
     } catch (error) {
-      console.error('Error al enviar los datos:', error.message);
+      console.error('Error:', error.message);
       throw error;
     }
+};
+
+export const addFovite = async (data) => {
+  const token = window.localStorage.getItem('token');
+  try {
+    const response = await fetch(`${url}/favorites/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({favorite: data}),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error('Error:', error.message);
+    throw error;
+  }
+};
+
+export const getFavorites = async () => {
+  const token = window.localStorage.getItem('token');
+  try {
+    const response = await fetch(`${url}/favorites`, {method: 'GET', headers: {'Authorization': `Bearer ${token}`}});
+    const data = await response.json();
+    if (data.success === false) {
+      throw new Error(data.message);
+    }
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw new Error(error.message);
+  }
 };

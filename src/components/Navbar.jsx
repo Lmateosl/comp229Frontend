@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import '../App.css'
 
-export default function Navbar ({isLoged, handleOpen, email, logout}) {
+export default function Navbar ({isLoged, handleOpen, email, logout, setIsAuth}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -17,9 +17,10 @@ export default function Navbar ({isLoged, handleOpen, email, logout}) {
     return (
         <div className='navbar_container'>
             <h1 className='title'>NEWSApp</h1>
+            <Button variant="text" onClick={() => {handleOpen(); setIsAuth(false)}} sx={{color: 'white'}}>Favorites</Button>
             {
                 !isLoged ? 
-                    <Button variant="text" onClick={handleOpen} sx={{color: 'white'}}>Login</Button>
+                    <Button variant="text" onClick={() => {handleOpen(); setIsAuth(true)}} sx={{color: 'white'}}>Login</Button>
                 :
                 <div>
                 <Button

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { addFovite } from '../features/httpRequest';
 import '../App.css';
 import CardNews from '../components/Card';
 
@@ -19,6 +20,19 @@ export default function CardsContainer({ articles }) {
         scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     };
 
+    const add = async(i) => {
+        const favorite = articles[i];
+        console.log(favorite);
+        try {
+            const data = await addFovite(favorite);
+            alert('Article added');
+          } catch (err) {
+            console.log(err);
+            const errorMsg = 'Error adding the article';
+            alert(errorMsg);
+          }
+    } 
+
     return (
         <div className="articles_container">
             {/* Left arrow for scrolling */}
@@ -33,7 +47,7 @@ export default function CardsContainer({ articles }) {
                         className={`article ${i === selectedArticleIndex ? 'focused' : i !== selectedArticleIndex && selectedArticleIndex !== null ? 'blurred' : ''}`}
                         onClick={() => handleSelectArticle(i)}
                     >
-                        <CardNews article={article} />
+                        <CardNews article={article} add={add} id={i}/>
                     </div>
                 ))}
             </div>

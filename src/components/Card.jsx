@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function CardNews({ article }) {
+export default function CardNews({ article, add, id, isNotFavorite=true }) {
   return (
     <Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', height: '450px'}}> 
       <CardMedia
@@ -20,12 +20,15 @@ export default function CardNews({ article }) {
           {article.title}
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary', flexGrow: 1, overflow: 'hidden' }}>
-          {article.content}
+          {article.content ? article.content : article.description}
         </Typography>
       </CardContent>
+      {isNotFavorite &&
       <CardActions sx={{ paddingBottom: 1 }}>
+         <Button size="small" onClick={() => add(id)} rel="noopener noreferrer">Add</Button>
         <Button size="small" component="a" href={article.url} target="_blank" rel="noopener noreferrer">Learn More</Button>
       </CardActions>
+      }
     </Card>
   );
 }

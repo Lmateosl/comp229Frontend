@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AuthContainer from '../container/AuthContainer';
 import { display, height } from '@mui/system';
+import Favorites from './favorites';
 
 const style = {
   position: 'absolute',
@@ -19,7 +20,7 @@ const style = {
   height: '60%'
 };
 
-export default function ModalAuth({open, auth, handleClose}) {
+export default function ModalAuth({open, auth, handleClose, isAuth, getFav, favorites}) {
   return (
     <div>
       <Modal
@@ -29,7 +30,7 @@ export default function ModalAuth({open, auth, handleClose}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <AuthContainer auth={auth}/>
+          {isAuth ? <AuthContainer auth={auth}/> : <Favorites getFav={getFav} favorites={favorites}/>}
           <Button variant="contained" onClick={() => handleClose()} sx={{display: 'block', margin: '40px auto'}}>Close</Button>
         </Box>
       </Modal>
