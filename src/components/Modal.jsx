@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AuthContainer from '../container/AuthContainer';
 import { display, height } from '@mui/system';
-import Favorites from './favorites';
+import Favorites from './Favorites.jsx';
 
 const style = {
   position: 'absolute',
